@@ -4,7 +4,7 @@ Key words: brain sex continuum; major depressive disorders
 
 Data and Code of paper:
 
-[Link for paper].
+Association between Brain Androgyny and Major Depressive Disorder: A Large-Scale Neuroimaging Analysis (Zhang et al. 2022).
 
 NOTE
 
@@ -20,7 +20,7 @@ NOTE
 
 Neuroimaging data were preprocessed through Weikang Gong's resting-state fMRI preprocessing pipeline (https://github.com/weikanggong/Resting-state-fMRI-preprocessing). The pipeline descripted in the Method section were used to preprocess the data.
 
-3.If the data and codes are used in your work, please cite the above reference, namely [link for paper]
+3.If the data and codes are used in your work, please cite the above reference, namely Association between Brain Androgyny and Major Depressive Disorder: A Large-Scale Neuroimaging Analysis (Zhang et al. 2022)
 
 SUMMARY （Matlab2019a)
 
