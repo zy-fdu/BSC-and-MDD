@@ -49,7 +49,7 @@ step 2: Analysis of meta-MDD data (metaMDD_analysis.m)
         
         step 2.5.4: Plot the difference in each BSC group.
         
-step 3: Meta-analysis (based on R 4.1.2)
+step 3: Meta-analysis (based on R 4.1.2) (BSC_MDD_meta.R)
     
     step 3.1: Input of data for meta-analysis.
     
