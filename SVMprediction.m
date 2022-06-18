@@ -10,7 +10,7 @@ else
     glm_compute=1;
 end
 
-
+% compute the FC matrix
 n_person = length(dep_TC);
 for person = 1:n_person
     X = corr(dep_TC{person}(:,1:n_ROI));
@@ -23,9 +23,10 @@ end
 FC = 0.5*log((1+FC)./(1-FC));
 
 fprintf('finish preparation.\n')
-regresscov = [cov_dep.age,cov_dep.age.^2,cov_dep.age.^3];
+regresscov = [cov_dep.age,cov_dep.age.^2,cov_dep.age.^3]; % age, age^2, and age^3 as covariates
 fprintf('starting regressing out covariates\n')
 
+% regressing out age
 for i = 1:(n_ROI*(n_ROI-1)/2)
     if glm_compute==1
         glmstruct{i} = fitglm(regresscov,FC(:,i));
@@ -37,13 +38,8 @@ if glm_compute==1
     save('glmstruct.mat','glmstruct');
 end
 
-% predicting on test set
-
-[~,prob] = predict(svmstruct,FC_regressed);
-
-    
+% sex classification on test set
+[~,prob] = predict(svmstruct,FC_regressed);  % calculating the classification score
 fprintf('finish calculating\n');
-
-%
-gc = normcdf(prob(:,2));
-output = double(gc>0.5);
+BSC = normcdf(prob(:,2));  % calculating the probabiliy, i.e., the BSC
+output = double(BSC>0.5);
