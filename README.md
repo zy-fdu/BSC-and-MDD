@@ -4,20 +4,20 @@ Key words: brain sex continuum; major depressive disorders
 
 Data and Code of paper:
 
-Association between Brain Androgyny and Major Depressive Disorder: A Large-Scale Neuroimaging Analysis (Zhang et al. 2022).
+Association between Brain Androgyny and Major Depressive Disorder in males and females: A Large-Scale Neuroimaging Analysis (Zhang et al. 2022).
 
 NOTE
 
 1. Use of all data included in the paper was acknowledged. The YMU is the abbreviation for the Yang-Ming University dataset. The PKU is the abbreviation for the Peking University Sixth Hospital dataset.
 
 
-2. The brain sex continuum was calculated by the machine learning classifier trained through the UK Biobank dataset (The Human Brain Is Best Described as Being on a Female/Male Continuum: Evidence from a Neuroimaging Connectivity Study (Zhang et al. 2021, doi: 10.1093/cercor/bhaa408), code: https://github.com/zy-fdu/Brain-Gender-Continuum). cov_YMU is a variable in table format, containing covariates of subjects from YMU dataset. The covariates including age, sex, meanFD, diagnosis, HAM-D, etc.
+2. The brain sex continuum was calculated by the machine learning classifier trained through the UK Biobank dataset (The Human Brain Is Best Described as Being on a Female/Male Continuum: Evidence from a Neuroimaging Connectivity Study (Zhang et al. 2021, doi: 10.1093/cercor/bhaa408), code: https://github.com/zy-fdu/Brain-Gender-Continuum). cov_YMU is a variable in table format, containing covariates of subjects from YMU dataset. The covariates including age, sex, meanFD, diagnosis, HAM-D, etc. Similarly, cov_metaMDD and cov_PKU contains covariates of subjects from metaMDD and PKU dataset respectively.
 
-Neuroimaging data were preprocessed through Weikang Gong's resting-state fMRI preprocessing pipeline (https://github.com/weikanggong/Resting-state-fMRI-preprocessing). The pipeline descripted in the Method section were used to preprocess the data.
+Neuroimaging data were preprocessed through Dr. Weikang Gong's resting-state fMRI preprocessing pipeline (https://github.com/weikanggong/Resting-state-fMRI-preprocessing). The pipeline descripted in the Method section were used to preprocess the data.
 
-3.If the data and codes are used in your work, please cite the above reference, namely Association between Brain Androgyny and Major Depressive Disorder: A Large-Scale Neuroimaging Analysis (Zhang et al. 2022)
+3.If the data and codes are used in your work, please cite the above reference, namely Association between Brain Androgyny and Major Depressive Disorder in males and females: A Large-Scale Neuroimaging Analysis (Zhang et al. 2022)
 
-SUMMARY （Matlab2021b)
+SUMMARY （Matlab2021b and R4.1.2)
 
 step 1: Analysis of YMU data (YMU_analysis.m)
 
