@@ -45,12 +45,12 @@ b=errorbar(x(1,:),y(1,:),err(1,:),'linestyle','None','Marker','*','LineWidth',1)
 errorbar(x(2,:),y(2,:),err(2,:),'linestyle','None','Marker','*','LineWidth',1);
 errorbar(x(3,:),y(3,:),err(3,:),'linestyle','None','Marker','*','LineWidth',1);
 
-set(BSCa,'Xticklabel',{'baseline','8 week'});
+set(gca,'Xticklabel',{'baseline','8 week'});
 ylabel(ylabel_str,'Interpreter', 'none');  
 xlabel('Time')
-legend({['BSC<0.35, nSubj=',num2str(numel(find(cluster==1)))],['0.35<=BSC<=0.65, nSubj=',num2str(numel(find(cluster==2)))],['BSC>0.65, nSubj=',num2str(numel(find(cluster==3)))]});
-saveas(BSCf,[outdir,ylabel_str,'_0w_8w_',date],'png')
-saveas(BSCf,[outdir,ylabel_str,'_0w_8w_',date],'fig')
+legend({['female-like, nSubj=',num2str(numel(find(cluster==1)))],['androgynous, nSubj=',num2str(numel(find(cluster==2)))],['male-like, nSubj=',num2str(numel(find(cluster==3)))]});
+saveas(gcf,[outdir,ylabel_str,'_0w_8w_',date],'png')
+saveas(gcf,[outdir,ylabel_str,'_0w_8w_',date],'fig')
 
 % h=figure()
 % set(h,'DefaultAxesColorOrder',[1 0 0; 0 0 1; 0 1 0]); 
@@ -66,8 +66,8 @@ saveas(BSCf,[outdir,ylabel_str,'_0w_8w_',date],'fig')
 % hold on;
 % 
 % title(ylabel_str,'Interpreter', 'none');
-% set(BSCa,'Xticklabel',{'baseline','8 week'});
-% set(BSCa,'FontSize',16);
+% set(gca,'Xticklabel',{'baseline','8 week'});
+% set(gca,'FontSize',16);
 % ylabel(ylabel_str,'Interpreter', 'none');  
 % xlabel('Time')
 

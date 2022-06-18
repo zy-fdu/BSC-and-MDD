@@ -1,4 +1,4 @@
-function [gc,output]=SVMprediction(dep_TC,cov_dep,svmstruct,glmstruct_path)
+function [BSC,output]=SVMprediction(RSts_aal2_PKU,cov_PKU,svmstruct,glmstruct_path)
 %%
 n_ROI = 94;
 
@@ -10,10 +10,10 @@ else
     glm_compute=1;
 end
 
-
-n_person = length(dep_TC);
+% calculating FC
+n_person = length(RSts_aal2_PKU);
 for person = 1:n_person
-    X = corr(dep_TC{person}(:,1:n_ROI));
+    X = corr(RSts_aal2_PKU{person}(:,1:n_ROI));
     xtemp = [];
     for edge = 1:n_ROI
         xtemp = [xtemp,X(edge,edge+1:n_ROI)];
@@ -23,7 +23,7 @@ end
 FC = 0.5*log((1+FC)./(1-FC));
 
 fprintf('finish preparation.\n')
-regresscov = [cov_dep.age,cov_dep.age.^2,cov_dep.age.^3];
+regresscov = [cov_PKU.age,cov_PKU.age.^2,cov_PKU.age.^3]; % covariates to be regressed out from FC
 fprintf('starting regressing out covariates\n')
 
 for i = 1:(n_ROI*(n_ROI-1)/2)
@@ -37,13 +37,9 @@ if glm_compute==1
     save('glmstruct.mat','glmstruct');
 end
 
-% predicting on test set
-
-[~,prob] = predict(svmstruct,FC_regressed);
-
-    
+% classification on test set
+[~,prob] = predict(svmstruct,FC_regressed); % calculating the classification score
 fprintf('finish calculating\n');
-
 %
-gc = normcdf(prob(:,2));
-output = double(gc>0.5);
+BSC = normcdf(prob(:,2)); % calculating the probability i.e. the BSC
+output = double(BSC>0.5); % binarize the BSC to calculate the classification accuracy
