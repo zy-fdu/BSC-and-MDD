@@ -62,22 +62,15 @@ acc_diff_m = sort(acc(4,:)-acc(3,:),'ascend');
 fprintf('female: %.4f to %.4f; male: %.4f to %.4f \n',acc_diff_f(n_bstp*0.025+1),acc_diff_f(n_bstp*0.975),acc_diff_m(n_bstp*0.025+1),acc_diff_m(n_bstp*0.975));
 
 %% Figure 2a and b
-female_bar = zeros(10,2);male_bar = zeros(10,2);
-for i_bar = 1:10 % calculating the percentage of subjects in each interval(1:HC, 2:MDD)
-    female_bar(i_bar,1) = sum(BSC_aal2(cov_YMU.sex==0 & cov_YMU.diag==0)>0.1*(i_bar-1) & BSC_aal2(cov_YMU.sex==0 & cov_YMU.diag==0)<=0.1*i_bar)/sum(cov_YMU.sex==0 & cov_YMU.diag==0);
-    female_bar(i_bar,2) = sum(BSC_aal2(cov_YMU.sex==0 & cov_YMU.diag==1)>0.1*(i_bar-1) & BSC_aal2(cov_YMU.sex==0 & cov_YMU.diag==1)<=0.1*i_bar)/sum(cov_YMU.sex==0 & cov_YMU.diag==1);
-    male_bar(i_bar,1) = sum(BSC_aal2(cov_YMU.sex==1 & cov_YMU.diag==0)>0.1*(i_bar-1) & BSC_aal2(cov_YMU.sex==1 & cov_YMU.diag==0)<=0.1*i_bar)/sum(cov_YMU.sex==1 & cov_YMU.diag==0);
-    male_bar(i_bar,2) = sum(BSC_aal2(cov_YMU.sex==1 & cov_YMU.diag==1)>0.1*(i_bar-1) & BSC_aal2(cov_YMU.sex==1 & cov_YMU.diag==1)<=0.1*i_bar)/sum(cov_YMU.sex==1 & cov_YMU.diag==1);
-end
-% calculate the statistics of difference in distribution between HCs and
-% MDDs
+ind_plot_HC = find(cov_YMU.sex==1&cov_YMU.diag==0);
+ind_plot_MDD = find(cov_YMU.sex==1&cov_YMU.diag==1);
+boxplot([BSC_aal2(ind_plot_HC);BSC_aal2(ind_plot_MDD)],[ones(length(ind_plot_HC),1);2*ones(length(ind_plot_MDD),1)]);
+hold on
+plot([ones(length(ind_plot_HC),1)+randn(length(ind_plot_HC),1)*0.1;2*ones(length(ind_plot_MDD),1)+randn(length(ind_plot_MDD),1)*0.1],[BSC_aal2(ind_plot_HC);BSC_aal2(ind_plot_MDD)],'+')
+set(gca,'xticklabel',{'HC','MDD'})
+
 mdl = fitglm(cov_YMU{cov_YMU.sex==0,[4,2,3,7]},BSC_aal2(cov_YMU.sex==0)); % 4=diag, 2=age, 3=sex, 7=meanFD
 mdl = fitglm(cov_YMU{cov_YMU.sex==1,[4,2,3,7]},BSC_aal2(cov_YMU.sex==1));
-bar(female_bar) % figure 2a
-legend('HC','MDD')
-bar(female_bar) % figure 2b
-legend('HC','MDD')
-
 %% HAMD plot only YMU (figure 2f)
 mdl = fitglm(cov_YMU{:,[2,3,7]},BSC_aal2);
 x = BSC_aal2 - [ones(length(BSC_aal2),1),cov_YMU{:,[2,3,7]}]*mdl.Coefficients.Estimate;
