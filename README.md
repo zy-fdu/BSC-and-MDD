@@ -57,14 +57,24 @@ step 3: Meta-analysis (based on R 4.1.2) (BSC_MDD_meta.R)
     
     step 3.3: Egger's test for heterogeneity.
 
-step 4: Analysis of PKU data (BSCComparison.m)
+step 4: Transcriptomic Analysis (enrichment_analysis_of_genes.r)
     
-    step 4.1: Calculating the BSC of PKU participants. (SVMprediction.m)
+    step 4.1: calculate the weight for each ROI through meta-analysis. (FCweight_meta.R)
+    
+    step 4.2: AHBA data pre-processing. (S01_AHBA_datapreprocess.m)
+    
+    step 4.3: PLS analysis. (S02_Mediation_and_PLS_meta.m)
+    
+    step 4.4: Leave-One-Donor-Out analysis. (S03_leave_one_donor_out_and_PLS_meta.m)
 
-    step 4.2: Comparing patients at baseline and 8 weeks. (display_boxplot_parallel_BSC.m)
+step 5: Analysis of PKU data (BSCComparison.m)
     
-    step 4.3: HAM-D reduction in three BSC groups. (display_parallel_HAMD.m and display_deltaHAMD3groups.m)
+    step 5.1: Calculating the BSC of PKU participants. (SVMprediction.m)
+
+    step 5.2: Comparing patients at baseline and 8 weeks. (display_boxplot_parallel_BSC.m)
     
-    step 4.4: Examining the medication effect. (display_0w_8w_mean.m)
+    step 5.3: HAM-D reduction in three BSC groups. (display_parallel_HAMD.m and display_deltaHAMD3groups.m)
     
-    step 4.5: Remission in different BSC groups. (PKU_remission.m)
+    step 5.4: Examining the medication effect. (display_0w_8w_mean.m)
+    
+    step 5.5: Remission in different BSC groups. (PKU_remission.m)
