@@ -6,6 +6,8 @@ Data and Code of paper:
 
 Association between Brain Androgyny and Major Depressive Disorder in males and females: A Large-Scale Neuroimaging Analysis (Zhang et al. 2022).
 
+The toolbox for computing the brain sex continuum could be found at https://github.com/zy-fdu/Brain-Sex-Continuum.
+
 NOTE
 
 1. Use of all data included in the paper was acknowledged. The YMU is the abbreviation for the Yang-Ming University dataset. The PKU is the abbreviation for the Peking University Sixth Hospital dataset.
